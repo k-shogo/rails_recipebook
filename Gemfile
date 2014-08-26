@@ -45,6 +45,11 @@ gem 'activerecord-import'
 
 gem 'public_activity'
 
+#Authentication
+gem 'devise'
+#Authorization
+gem 'cancancan'
+
 group :development do
   gem 'spring'
   gem 'quiet_assets'

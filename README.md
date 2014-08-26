@@ -24,6 +24,7 @@ $ bundle install --path vendor/bundle
 
 ### `config/secret.yml` を作成
 `secret.yml`の例
+
 ```yaml
 development:
   secret_key_base: 0a9cdc75f4735b03060d8f884a7730f4f9c023be5ee698db9d9a2f886899d7b9f10d0f011f9e8421997c46bb057bdaa19a49ed321feee661a3358f2742c39be8
@@ -53,6 +54,17 @@ AWS_SECRET=wuXhsepuXD6xXPy5X5r1Xr9YXZnsXxE8XgSeXw4X
 AWS_REGION=ap-northeast-1
 S3_UPLOAD_BUCKET=stoat
 TRANSCODER_PIPELINE_ID=1909239909749-x4xtxx
+```
+
+### 管理者アカウントの作成
+
+管理者アカウントはブラウザから追加できないようになっています。  
+rails console から直接作成してください。  
+password と password_confirmation (パスワードの確認）は同じものである必要があります。
+
+```ruby
+user = User.create email: 'admin@gmail.com', password: 'testpass', password_confirmation: 'testpass', role: 'admin'
+user.confirm!
 ```
 
 ## 起動方法
