@@ -1,0 +1,15 @@
+%h1 Listing places
+%table
+  %thead
+    %tr
+      %th Name
+      %th{:colspan => "3"}
+  %tbody
+    - @places.each do |place|
+      %tr
+        %td= place.name
+        %td= link_to 'Show', place
+        %td= link_to 'Edit', edit_place_path(place)
+        %td= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Place', new_place_path

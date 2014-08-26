@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @document.title
+%p
+  %b Description:
+  = @document.description
+
+= link_to 'Edit', edit_document_path(@document)
+\|
+= link_to 'Back', documents_path
