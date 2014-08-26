@@ -17,5 +17,5 @@
 //= require jquery.googlemap
 //= require ajaxzip3
 //= require video
-//= require turbolinks
 //= require_tree .
+//= require turbolinks
