@@ -25,6 +25,25 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
+# uploader
+gem 'carrierwave'
+gem 'fog'
+gem 'aws-sdk', '~> 1.0'
+
+# background upload
+gem 'carrierwave_backgrounder'
+gem 'sidekiq'
+gem 'sidekiq-middleware'
+gem 'sinatra', '>= 1.3.0', :require => nil
+
+# setting
+gem 'settingslogic'
+gem 'dotenv-rails'
+
+gem 'activerecord-import'
+
+gem 'public_activity'
+
 group :development do
   gem 'spring'
   gem 'quiet_assets'

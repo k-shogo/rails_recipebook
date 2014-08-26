@@ -1,0 +1,18 @@
+defaults: &defaults
+  image_upload_destination: :fog
+  aws:
+    access_key:             <%= ENV['AWS_ACCESS_KEY']         %>
+    secret:                 <%= ENV['AWS_SECRET']             %>
+    region:                 <%= ENV['AWS_REGION']             %>
+    s3_upload_bucket:       <%= ENV['S3_UPLOAD_BUCKET']       %>
+    transcoder_pipeline_id: <%= ENV['TRANSCODER_PIPELINE_ID'] %>
+
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

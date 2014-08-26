@@ -7,6 +7,11 @@
   %b Description:
   = @presentation.description
 
+- if @presentation.video_url
+  %p
+    %video.video-js.vjs-default-skin.vjs-big-play-centered{controls: "", preload: "auto"}
+      %source{src: @presentation.video_url}
+
 = link_to 'Edit', edit_presentation_path(@presentation)
 \|
 = link_to 'Back', presentations_path
