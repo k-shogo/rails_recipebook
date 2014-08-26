@@ -11,6 +11,11 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
+//= require googlemaps_api
+//= require jquery.googlemap
+//= require ajaxzip3
+//= require video
 //= require turbolinks
 //= require_tree .

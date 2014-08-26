@@ -2,6 +2,25 @@
 %p
   %strong Name:
   = @place.name
+
+%p
+  %b Adress:
+  = [@place.postcode, @place.prefecture, @place.address].join(' ')
+
+= render 'data_attr', values: {place: @place}
+
+#map_canvas.map
+
+:coffee
+  $ ->
+    latitude  = $('#data_attr').data('place').latitude
+    longitude = $('#data_attr').data('place').longitude
+    zoom      = $('#data_attr').data('place').zoom_level
+    $("#map_canvas").googleMaps
+      latitude: latitude
+      longitude: longitude
+    ,
+      zoom : zoom
+
 = link_to 'Edit', edit_place_path(@place)
-|
-\#{link_to 'Back', places_path}
+= link_to 'Back', places_path

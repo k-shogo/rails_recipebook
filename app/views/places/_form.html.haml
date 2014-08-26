@@ -1,3 +1,24 @@
+:coffee
+  setMap = (address, latitude, longitude, zoom) ->
+    $("#map_canvas").googleMaps
+      address: address
+      latitude: ""
+      longitude: ""
+      collback: (latitude, longitude) ->
+        $("#place_latitude").val latitude
+        $("#place_longitude").val longitude
+      zoom_collback: (zoom) ->
+        $("#place_zoom_level").val zoom
+    ,
+      zoom : zoom
+  $ ->
+    $("#search").on 'click', (event) ->
+      address = $('#place_address').val()
+      zoom = parseInt($('#place_zoom_level').val())
+      setMap(address,"","", zoom)
+    $("#place_postcode").on 'keyup', (event) ->
+      AjaxZip3.zip2addr(this,'','place[prefecture]','place[address]')
+
 = form_for(@place) do |f|
   - if @place.errors.any?
     #error_explanation
@@ -9,7 +30,29 @@
           %li= message
   .field
     = f.label :name
-    %br/
     = f.text_field :name
+  .field
+    = f.label :postcode
+    = f.text_field :postcode
+  .field
+    = f.label :prefecture
+    = f.text_field :prefecture
+  .field
+    = f.label :address
+    = f.text_field :address
+  .fiel
+    = f.label :latitude
+    = f.text_field :latitude
+  .field
+    = f.label :longitude
+    = f.text_field :longitude
+  .field
+    = f.label :zoom_level
+    = f.text_field :zoom_level
+
+  %input{type: 'button', value: '住所から緯度経度を取得', id: 'search'}
+
+  #map_canvas.map
+
   .actions
     = f.submit

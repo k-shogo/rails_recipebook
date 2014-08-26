@@ -55,6 +55,12 @@ ActiveRecord::Schema.define(version: 20140826085303) do
 
   create_table "places", force: true do |t|
     t.string   "name"
+    t.string   "postcode"
+    t.string   "prefecture"
+    t.string   "address"
+    t.decimal  "latitude",   precision: 20, scale: 15
+    t.decimal  "longitude",  precision: 20, scale: 15
+    t.integer  "zoom_level"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -15,6 +15,7 @@ class PlacesController < ApplicationController
   # GET /places/new
   def new
     @place = Place.new
+    @place.zoom_level = 15
   end
 
   # GET /places/1/edit
@@ -69,6 +70,6 @@ class PlacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def place_params
-      params.require(:place).permit(:name)
+      params.require(:place).permit(:name, :postcode, :prefecture, :address, :latitude, :longitude, :zoom_level)
     end
 end
