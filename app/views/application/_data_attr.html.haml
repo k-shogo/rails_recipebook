@@ -1,6 +1,11 @@
 :ruby
   option = {}
   values.each do |key, value|
-    option["data-#{key}"] = value.to_json
+    case value
+    when String
+      option["data-#{key}"] = value
+    else
+      option["data-#{key}"] = value.to_json
+    end
   end
 #data_attr{option}

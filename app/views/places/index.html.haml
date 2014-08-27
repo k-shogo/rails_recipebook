@@ -1,4 +1,9 @@
 %h1 Listing places
+
+= render 'data_attr', values: {places: @places, path: 'place_index'}
+.ui.items
+  = render @places
+
 %table
   %thead
     %tr
@@ -13,3 +18,4 @@
         %td= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' }
 %br/
 = link_to 'New Place', new_place_path
+

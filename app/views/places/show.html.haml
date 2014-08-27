@@ -7,20 +7,9 @@
   %b Adress:
   = [@place.postcode, @place.prefecture, @place.address].join(' ')
 
-= render 'data_attr', values: {place: @place}
+= render 'data_attr', values: {place: @place, path: 'place_show'}
 
-#map_canvas.map
-
-:coffee
-  $ ->
-    latitude  = $('#data_attr').data('place').latitude
-    longitude = $('#data_attr').data('place').longitude
-    zoom      = $('#data_attr').data('place').zoom_level
-    $("#map_canvas").googleMaps
-      latitude: latitude
-      longitude: longitude
-    ,
-      zoom : zoom
+.map{id: "map_canvas#{@place.id}"}
 
 = link_to 'Edit', edit_place_path(@place)
 = link_to 'Back', places_path

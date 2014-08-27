@@ -1,7 +1,8 @@
 = simple_form_for @event do |f|
   .form-inputs
+    = f.association :place
     = f.input :title
     = f.input :description
-    = f.input :date
+    = f.input :date, as: :calendar
   .form-actions
     = f.button :submit, "save"

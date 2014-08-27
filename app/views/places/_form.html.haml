@@ -1,24 +1,3 @@
-:coffee
-  setMap = (address, latitude, longitude, zoom) ->
-    $("#map_canvas").googleMaps
-      address: address
-      latitude: ""
-      longitude: ""
-      collback: (latitude, longitude) ->
-        $("#place_latitude").val latitude
-        $("#place_longitude").val longitude
-      zoom_collback: (zoom) ->
-        $("#place_zoom_level").val zoom
-    ,
-      zoom : zoom
-  $ ->
-    $("#search").on 'click', (event) ->
-      address = $('#place_address').val()
-      zoom = parseInt($('#place_zoom_level').val())
-      setMap(address,"","", zoom)
-    $("#place_postcode").on 'keyup', (event) ->
-      AjaxZip3.zip2addr(this,'','place[prefecture]','place[address]')
-
 = simple_form_for @place do |f|
   .form-inputs
     = f.input :name
