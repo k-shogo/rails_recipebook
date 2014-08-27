@@ -1,5 +1,6 @@
 class Presentation < ActiveRecord::Base
   include Identifiable
+  include Commentable
   include Presentation::Transcodeable
   include PublicActivity::Model
   tracked

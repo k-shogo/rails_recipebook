@@ -4,4 +4,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   enum role: {admin: 'admin', general: 'general'}
+  has_many :comments
 end

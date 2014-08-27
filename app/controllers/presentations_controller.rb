@@ -65,6 +65,7 @@ class PresentationsController < ApplicationController
   private
   def set_presentation
     @presentation = Presentation.find(params[:id])
+    @comment = @presentation.comments.build
   end
 
   def presentation_params

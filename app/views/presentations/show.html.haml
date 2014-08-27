@@ -25,3 +25,14 @@
 = link_to 'Add Document', new_presentation_document_path(@presentation)
 = link_to 'Edit', edit_presentation_path(@presentation)
 = link_to 'Back', event_path(@presentation.event)
+
+%p
+  %b comments
+  %ul
+    - @presentation.comments.each do |comment|
+      - unless comment.new_record?
+        %li
+          = comment.user.email
+          = comment.body
+
+= render 'comments/form'

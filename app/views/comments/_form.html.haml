@@ -1,0 +1,8 @@
+= simple_form_for(@comment) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :commentable_id,   as: :hidden
+    = f.input :commentable_type, as: :hidden
+    = f.input :body
+  .form-actions
+    = f.button :submit
