@@ -14,6 +14,8 @@ GEM
       activesupport (= 4.1.5)
       builder (~> 3.1)
       erubis (~> 2.7.0)
+    active_link_to (1.0.2)
+      actionpack
     activemodel (4.1.5)
       activesupport (= 4.1.5)
       builder (~> 3.1)
@@ -199,6 +201,8 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    semantic-ui-sass (0.16.1.0)
+      sass (~> 3.2)
     settingslogic (2.0.9)
     sexp_processor (4.4.4)
     sidekiq (3.2.2)
@@ -209,6 +213,9 @@ GEM
       redis-namespace (>= 1.3.1)
     sidekiq-middleware (0.3.0)
       sidekiq (>= 2.12.4)
+    simple_form (3.0.2)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
     sinatra (1.4.5)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -246,6 +253,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_link_to
   activerecord-import
   awesome_print
   aws-sdk (~> 1.0)
@@ -272,9 +280,11 @@ DEPENDENCIES
   rails (= 4.1.5)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
+  semantic-ui-sass
   settingslogic
   sidekiq
   sidekiq-middleware
+  simple_form
   sinatra (>= 1.3.0)
   spring
   turbolinks

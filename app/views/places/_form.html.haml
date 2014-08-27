@@ -19,40 +19,19 @@
     $("#place_postcode").on 'keyup', (event) ->
       AjaxZip3.zip2addr(this,'','place[prefecture]','place[address]')
 
-= form_for(@place) do |f|
-  - if @place.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@place.errors.count, "error")
-        prohibited this place from being saved:
-      %ul
-        - @place.errors.full_messages.each do |message|
-          %li= message
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :postcode
-    = f.text_field :postcode
-  .field
-    = f.label :prefecture
-    = f.text_field :prefecture
-  .field
-    = f.label :address
-    = f.text_field :address
-  .fiel
-    = f.label :latitude
-    = f.text_field :latitude
-  .field
-    = f.label :longitude
-    = f.text_field :longitude
-  .field
-    = f.label :zoom_level
-    = f.text_field :zoom_level
+= simple_form_for @place do |f|
+  .form-inputs
+    = f.input :name
+    = f.input :postcode
+    = f.input :prefecture
+    = f.input :address
+    = f.input :latitude
+    = f.input :longitude
+    = f.input :zoom_level
 
   %input{type: 'button', value: '住所から緯度経度を取得', id: 'search'}
 
   #map_canvas.map
+  .form-actions
+    = f.button :submit, "save"
 
-  .actions
-    = f.submit

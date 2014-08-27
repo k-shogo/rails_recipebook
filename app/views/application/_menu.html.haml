@@ -1,0 +1,19 @@
+.ui.secondary.pointing.menu
+  = active_link_to events_path, class: 'item' do
+    = semantic_icon(:calendar)
+    Event
+  = active_link_to categories_path, class: 'item' do
+    = semantic_icon(:tags)
+    Category
+  = active_link_to places_path, class: 'item' do
+    = semantic_icon(:map, :marker)
+    Place
+  .right.menu
+    - if user_signed_in?
+      = link_to destroy_user_session_path, method: :delete, class: 'ui item' do
+        = semantic_icon(:sign, :out)
+        Logout
+    - else
+      = active_link_to new_user_session_path, class: 'ui item' do
+        = semantic_icon(:sign, :in)
+        Login
