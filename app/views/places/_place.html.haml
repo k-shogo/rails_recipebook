@@ -5,4 +5,5 @@
     .name= place.name
     %p.description= "#{place.postcode} #{place.prefecture} #{place.address}"
     .extra
-      199 votes
+      = place.events.count
+      events

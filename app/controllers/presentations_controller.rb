@@ -14,7 +14,7 @@ class PresentationsController < ApplicationController
 
   # GET /presentations/new
   def new
-    @presentation = Presentation.new
+    @presentation = Presentation.new(event_id: params[:event_id])
   end
 
   # GET /presentations/1/edit
@@ -28,7 +28,7 @@ class PresentationsController < ApplicationController
 
     respond_to do |format|
       if @presentation.save
-        format.html { redirect_to @presentation, notice: 'Presentation was successfully created.' }
+        format.html { redirect_to event_path(@presentation.event), notice: 'Presentation was successfully created.' }
         format.json { render :show, status: :created, location: @presentation }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class PresentationsController < ApplicationController
   def update
     respond_to do |format|
       if @presentation.update(presentation_params)
-        format.html { redirect_to @presentation, notice: 'Presentation was successfully updated.' }
+        format.html { redirect_to event_path(@presentation.event), notice: 'Presentation was successfully updated.' }
         format.json { render :show, status: :ok, location: @presentation }
       else
         format.html { render :edit }
@@ -54,21 +54,20 @@ class PresentationsController < ApplicationController
   # DELETE /presentations/1
   # DELETE /presentations/1.json
   def destroy
+    event = @presentation.event
     @presentation.destroy
     respond_to do |format|
-      format.html { redirect_to presentations_url, notice: 'Presentation was successfully destroyed.' }
+      format.html { redirect_to event_path(event), notice: 'Presentation was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_presentation
-      @presentation = Presentation.find(params[:id])
-    end
+  def set_presentation
+    @presentation = Presentation.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def presentation_params
-      params.require(:presentation).permit(:title, :description, :video, :video_cache)
-    end
+  def presentation_params
+    params.require(:presentation).permit(:title, :description, :video, :video_cache, :event_id, :category_id)
+  end
 end

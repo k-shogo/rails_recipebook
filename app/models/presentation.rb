@@ -9,6 +9,8 @@ class Presentation < ActiveRecord::Base
   has_many :documents
   has_many :transcodes
 
+  validates :title, presence: true
+
   mount_uploader      :video, VideoUploader
   store_in_background :video, VideoUploadWorker
 

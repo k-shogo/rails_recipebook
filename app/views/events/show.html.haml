@@ -1,4 +1,6 @@
-%p#notice= notice
+%p
+  %b Place:
+  = @event.place.name
 
 %p
   %b Title:
@@ -9,7 +11,16 @@
 %p
   %b Date:
   = @event.date
+%p
+  %b presentations
+  %ul
+    - @event.presentations.each do |presentation|
+      %li
+        = presentation.title
+        = link_to 'show', presentation
+        = link_to 'edit', edit_presentation_path(presentation)
+        = link_to 'destroy', presentation, method: :delete, data: { confirm: 'Are you sure?' }
 
+= link_to 'Add Presentation', new_event_presentation_path(@event)
 = link_to 'Edit', edit_event_path(@event)
-\|
 = link_to 'Back', events_path

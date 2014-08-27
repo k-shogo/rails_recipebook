@@ -1,7 +1,14 @@
-%p#notice= notice
 %p
   %strong Name:
   = @category.name
+%p
+  %b presentations
+  %ul
+    - @category.presentations.each do |presentation|
+      %li
+        = presentation.title
+        = link_to 'show', presentation
+
 = link_to 'Edit', edit_category_path(@category)
-|
-\#{link_to 'Back', categories_path}
+
+= link_to 'Back', categories_path

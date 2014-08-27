@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :documents
 
-  resources :presentations
-
-  resources :events
+  resources :events, shallow: true do
+    resources :presentations do
+      resources :documents
+    end
+  end
 
   resources :categories
 

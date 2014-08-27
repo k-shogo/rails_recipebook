@@ -12,6 +12,16 @@
     %video.video-js.vjs-default-skin.vjs-big-play-centered{controls: "", preload: "auto"}
       %source{src: @presentation.video_url}
 
+%p
+  %b documents
+  %ul
+    - @presentation.documents.each do |document|
+      %li
+        = document.title
+        = link_to 'show', document
+        = link_to 'edit', edit_document_path(document)
+        = link_to 'destroy', document, method: :delete, data: { confirm: 'Are you sure?' }
+
+= link_to 'Add Document', new_presentation_document_path(@presentation)
 = link_to 'Edit', edit_presentation_path(@presentation)
-\|
-= link_to 'Back', presentations_path
+= link_to 'Back', event_path(@presentation.event)
