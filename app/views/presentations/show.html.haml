@@ -13,6 +13,10 @@
       %source{src: @presentation.video_url}
 
 %p
+  %b categories
+  = @presentation.categories.map(&:name).join(', ')
+
+%p
   %b documents
   %ul
     - @presentation.documents.each do |document|

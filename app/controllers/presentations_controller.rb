@@ -10,6 +10,7 @@ class PresentationsController < ApplicationController
   # GET /presentations/1
   # GET /presentations/1.json
   def show
+    @comment = @presentation.comments.build
   end
 
   # GET /presentations/new
@@ -65,10 +66,9 @@ class PresentationsController < ApplicationController
   private
   def set_presentation
     @presentation = Presentation.find(params[:id])
-    @comment = @presentation.comments.build
   end
 
   def presentation_params
-    params.require(:presentation).permit(:title, :description, :video, :video_cache, :event_id, :category_id)
+    params.require(:presentation).permit(:title, :description, :video, :video_cache, :event_id, category_ids: [])
   end
 end

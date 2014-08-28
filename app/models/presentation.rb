@@ -6,9 +6,10 @@ class Presentation < ActiveRecord::Base
   tracked
 
   belongs_to :event
-  belongs_to :category
   has_many :documents
   has_many :transcodes
+  has_many :categorizes
+  has_many :categories, through: :categorizes
 
   validates :title, presence: true
 

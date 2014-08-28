@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140827160837) do
+ActiveRecord::Schema.define(version: 20140828053110) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 20140827160837) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "categorizes", force: true do |t|
+    t.integer  "presentation_id"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categorizes", ["presentation_id", "category_id"], name: "index_categorizes_on_presentation_id_and_category_id", unique: true, using: :btree
 
   create_table "comments", force: true do |t|
     t.integer  "commentable_id"
@@ -76,7 +85,6 @@ ActiveRecord::Schema.define(version: 20140827160837) do
 
   create_table "presentations", force: true do |t|
     t.integer  "event_id"
-    t.integer  "category_id"
     t.string   "uuid",        null: false
     t.string   "title"
     t.text     "description"

@@ -2,7 +2,6 @@ class CreatePresentations < ActiveRecord::Migration
   def change
     create_table :presentations do |t|
       t.references :event
-      t.references :category
 
       t.string     :uuid,          null: false
       t.string     :title

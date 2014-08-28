@@ -1,7 +1,7 @@
 = simple_form_for shallow_args(@presentation.event, @presentation) do |f|
   .form-inputs
     = f.input :event_id, as: :hidden
-    = f.association :category
+    = f.association :categories, as: :check_boxes
     = f.input :title
     = f.input :description
     = f.input :video
