@@ -37,6 +37,13 @@ class TranscodeCheckWorker
       if transcode
         transcode.update(param)
         transcode.create_activity :update_status, owner: transcode.presentation
+
+        @message = Message.new(type: :success, icon: :video, header: 'Transcode done', body: "#{transcode.job_id} transcode done")
+        view = ActionView::Base.new(Rails.root.join('app/views'))
+        view.extend SemanticIconHelper
+        html = view.render partial: 'messages/message', locals: {message: @message}
+        data = {html: html}
+        WebsocketRails[:messages].trigger :message, data.to_json
       end
     end
 

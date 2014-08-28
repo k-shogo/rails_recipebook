@@ -1,0 +1,6 @@
+.ui.icon.message{class: message.type}
+  = semantic_icon(:close)
+  = semantic_icon(message.icon) if message.icon
+  .content
+    .header= message.header if message.header
+    = message.body

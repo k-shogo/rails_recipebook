@@ -59,6 +59,9 @@ gem 'devise'
 #Authorization
 gem 'cancancan'
 
+# websocket
+gem 'websocket-rails'
+
 group :development do
   gem 'spring'
   gem 'quiet_assets'
