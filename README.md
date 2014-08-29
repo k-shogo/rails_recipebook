@@ -23,6 +23,7 @@
 * 非同期処理
 * websocketによるプッシュ通知
 * Amazon SQSでのキュー管理
+* 開発に便利なGem
 
 
 ## 動作環境
@@ -39,7 +40,7 @@
 
 ### リポジトリのクローン & 必要ライブラリのインストール
 ```bash
-$ git clone ssh://git@stash.rmp-oudan.net:7999/rted/rted-server-twin.git
+$ git clone git@github.com:k-shogo/rails_recipebook.git
 $ bundle install --path vendor/bundle
 ```
 
