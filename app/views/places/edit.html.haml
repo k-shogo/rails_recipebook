@@ -1,7 +1,6 @@
 %h1 Editing place
 
-= render 'data_attr', values: {path: 'place_edit'}
+#data_attr{data: {path: 'place_edit'}}
 = render 'form'
 = link_to 'Show', @place
-|
-\#{link_to 'Back', places_path}
+= link_to 'Back', places_path

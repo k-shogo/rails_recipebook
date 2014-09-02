@@ -1,6 +1,6 @@
 %h1 Listing places
 
-= render 'data_attr', values: {places: @places, path: 'place_index'}
+#data_attr{data: {places: @places.to_json, path: 'place_index'}}
 .ui.items
   = render @places
 

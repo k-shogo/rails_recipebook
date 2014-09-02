@@ -7,7 +7,7 @@
   %b Adress:
   = [@place.postcode, @place.prefecture, @place.address].join(' ')
 
-= render 'data_attr', values: {place: @place, path: 'place_show'}
+#data_attr{data: {place: @place.to_json, path: 'place_show'}}
 
 .map{id: "map_canvas#{@place.id}"}
 
