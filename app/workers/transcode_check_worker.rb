@@ -27,10 +27,9 @@ class TranscodeCheckWorker
 
   def perform
     sqs = AWS::SQS.new
-    queue_url = 'https://sqs.ap-northeast-1.amazonaws.com/776699022115/stoat-transcode'
 
     # ロングポーリングでメッセージを取得
-    sqs.queues[queue_url].poll(idle_timeout: 30) do |msg|
+    sqs.queues[Settings.sqs_queue_url].poll(idle_timeout: 30) do |msg|
       param = self.class.sqs_response_to_param msg.body
       p param
       transcode = Transcode.find_by(job_id: param[:job_id])

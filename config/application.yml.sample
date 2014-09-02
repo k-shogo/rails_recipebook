@@ -1,0 +1,22 @@
+defaults: &defaults
+  video_upload_destination: :fog
+  aws:
+    access_key: 'your_aws_access_key'
+    secret:     'your_aws_secret'
+    region:     'ap-northeast-1'
+    s3_upload_bucket: 's3_bucket_name'
+    transcoder:
+      pipeline_id: 'transcoder_pipeline_id'
+      presets:
+        '1351620000001-000040': 'generic_360p_16_9.mp4'
+        '1351620000001-100010': 'iPhone4.mp4'
+    sqs_queue_url: 'https://sqs.ap-northeast-1.amazonaws.com/xxxxxxxxx/xxxxxxxxxx'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

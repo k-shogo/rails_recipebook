@@ -67,25 +67,34 @@ $ bundle exec rake db:migrate
 
 ### 環境変数
 
-AWSのアクセスキー等を環境変数で与える必要があります。  
-`.env`ファイルでの記述例
+設定サンプルファイルをコピーして必要な値を設定してください。
 
+`cp config/application.yml.sample config/application.yml`
+
+AWSのアクセスキー等を環境変数で与える必要があります。  
+
+```yaml
+  aws:
+    access_key: 'AXIAJEXMXXWFXCXQEXAX'
+    secret:     'wuXhsepuXD6xXPy5X5r1Xr9YXZnsXxE8XgSeXw4X'
+    region:     'ap-northeast-1'
+    s3_upload_bucket: 'video_bucket'
+    transcoder:
+      pipeline_id: '1909239909749-x4xtxx'
+      presets:
+        '1351620000001-000040': 'generic_360p_16_9.mp4'
+        '1351620000001-100010': 'iPhone4.mp4'
+    sqs_queue_url: 'https://sqs.ap-northeast-1.amazonaws.com/xxxxxxxxx/xxxxxxxxxx'
 ```
-AWS_ACCESS_KEY=AXIAJEXMXXWFXCXQEXAX
-AWS_SECRET=wuXhsepuXD6xXPy5X5r1Xr9YXZnsXxE8XgSeXw4X
-AWS_REGION=ap-northeast-1
-S3_UPLOAD_BUCKET=stoat
-TRANSCODER_PIPELINE_ID=1909239909749-x4xtxx
-```
+
 
 ### 管理者アカウントの作成
 
 管理者アカウントはブラウザから追加できないようになっています。  
 rails console から直接作成してください。  
-password と password_confirmation (パスワードの確認）は同じものである必要があります。
 
 ```ruby
-user = User.create email: 'admin@gmail.com', password: 'testpass', password_confirmation: 'testpass', role: 'admin'
+user = User.create email: 'admin@gmail.com', password: 'testpass'
 user.confirm!
 ```
 

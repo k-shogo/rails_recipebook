@@ -5,13 +5,9 @@ class Presentation < ActiveRecord::Base
     def transcode
       if video?
         transcoder = AWS::ElasticTranscoder::Client.new(region: Settings.aws.region)
-        presets = {
-          generic_360p_16_9: '1351620000001-000040',
-          iPhone4:           '1351620000001-100010'
-        }
-        jobs = presets.map{ |preset_key, id|
+        jobs = Settings.aws.transcoder.presets.map{ |preset_id, name|
           options = {
-            pipeline_id: Settings.aws.transcoder_pipeline_id,
+            pipeline_id: Settings.aws.transcoder.pipeline_id,
             input: {
               key:          video.current_path,
               frame_rate:   'auto',
@@ -22,10 +18,10 @@ class Presentation < ActiveRecord::Base
             },
             outputs: [
               {
-                key:               "#{preset_key}.mp4",
-                preset_id:         id,
+                key:               name,
+                preset_id:         preset_id,
                 rotate:            "auto",
-                thumbnail_pattern: "{count}#{preset_key}"
+                thumbnail_pattern: "{count}#{name}"
               }
             ],
             output_key_prefix: video.transcode_dir

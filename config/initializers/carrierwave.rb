@@ -1,5 +1,5 @@
 CarrierWave.configure do |config|
-  if Settings.image_upload_destination == :fog
+  if Settings.video_upload_destination == :fog
     config.fog_credentials = {
       provider:              'AWS',
       aws_access_key_id:     Settings.aws.access_key,
