@@ -43,7 +43,9 @@ ActiveRecord::Schema.define(version: 20140828053110) do
     t.datetime "updated_at"
   end
 
+  add_index "categorizes", ["category_id"], name: "index_categorizes_on_category_id", using: :btree
   add_index "categorizes", ["presentation_id", "category_id"], name: "index_categorizes_on_presentation_id_and_category_id", unique: true, using: :btree
+  add_index "categorizes", ["presentation_id"], name: "index_categorizes_on_presentation_id", using: :btree
 
   create_table "comments", force: true do |t|
     t.integer  "commentable_id"
@@ -54,6 +56,9 @@ ActiveRecord::Schema.define(version: 20140828053110) do
     t.datetime "updated_at"
   end
 
+  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
   create_table "documents", force: true do |t|
     t.integer  "presentation_id"
     t.string   "title"
@@ -61,6 +66,8 @@ ActiveRecord::Schema.define(version: 20140828053110) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "documents", ["presentation_id"], name: "index_documents_on_presentation_id", using: :btree
 
   create_table "events", force: true do |t|
     t.integer  "place_id"
@@ -70,6 +77,8 @@ ActiveRecord::Schema.define(version: 20140828053110) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "events", ["place_id"], name: "index_events_on_place_id", using: :btree
 
   create_table "places", force: true do |t|
     t.string   "name"
@@ -94,6 +103,7 @@ ActiveRecord::Schema.define(version: 20140828053110) do
     t.datetime "updated_at"
   end
 
+  add_index "presentations", ["event_id"], name: "index_presentations_on_event_id", using: :btree
   add_index "presentations", ["uuid"], name: "index_presentations_on_uuid", unique: true, using: :btree
 
   create_table "transcodes", force: true do |t|
@@ -120,6 +130,8 @@ ActiveRecord::Schema.define(version: 20140828053110) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "transcodes", ["presentation_id"], name: "index_transcodes_on_presentation_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",        null: false

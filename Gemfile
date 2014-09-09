@@ -72,6 +72,7 @@ group :development do
   gem 'hirb'
   gem 'hirb-unicode'
   gem 'erb2haml'
+  gem 'rails_best_practices'
 end
 
 # Use ActiveModel has_secure_password

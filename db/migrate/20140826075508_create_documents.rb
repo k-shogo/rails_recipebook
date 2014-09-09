@@ -1,7 +1,7 @@
 class CreateDocuments < ActiveRecord::Migration
   def change
     create_table :documents do |t|
-      t.references :presentation
+      t.references :presentation, index: true
       t.string     :title
       t.text       :description
 

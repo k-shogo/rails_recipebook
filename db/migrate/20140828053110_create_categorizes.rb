@@ -1,8 +1,8 @@
 class CreateCategorizes < ActiveRecord::Migration
   def change
     create_table :categorizes do |t|
-      t.references :presentation
-      t.references :category
+      t.references :presentation, index: true
+      t.references :category,     index: true
 
       t.timestamps
 

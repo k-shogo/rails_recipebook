@@ -1,7 +1,7 @@
 class CreateTranscodes < ActiveRecord::Migration
   def change
     create_table :transcodes do |t|
-      t.references :presentation
+      t.references :presentation, index: true
 
       t.string  :job_id
       t.string  :arn
